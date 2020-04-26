@@ -50,6 +50,14 @@ class LinkedList {
     return this.printList();
   }
 
+  remove(index) {
+    let beforeDeletedNode = this.traverseToIndex(index - 1);
+    const unwantedNode = beforeDeletedNode.next;
+    beforeDeletedNode.next = unwantedNode.next;
+    this.length--;
+    return this.printList();
+  }
+
   printList() {
     const newArrayList = [];
     let currentNode = this.head;
@@ -71,3 +79,5 @@ firstItem.prepend(3);
 firstItem.insert(2, 56);
 firstItem.append(20);
 firstItem.insert(2, 55);
+firstItem.remove(2);
+firstItem.remove(1);
