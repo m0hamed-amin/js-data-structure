@@ -58,6 +58,24 @@ class LinkedList {
     return this.printList();
   }
 
+  reverse() {
+    if (!this.head.next) {
+      return this.head;
+    }
+    let first = this.head;
+    this.tail = this.head;
+    let second = first.next;
+    while (second) {
+      const temp = second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+    this.head.next = null;
+    this.head = first;
+    return this;
+  }
+
   printList() {
     const newArrayList = [];
     let currentNode = this.head;
@@ -73,15 +91,17 @@ const firstItem = new LinkedList(5);
 
 firstItem.append(10);
 firstItem.append(12);
-firstItem.prepend(16);
-firstItem.printList();
-firstItem.append(16);
-firstItem.append(16);
-firstItem.printList();
+// firstItem.prepend(16);
+// firstItem.printList();
+// firstItem.append(16);
+// firstItem.append(16);
+// firstItem.printList();
 firstItem.append(15);
-firstItem.prepend(3);
-firstItem.insert(2, 56);
+// firstItem.prepend(3);
+// firstItem.insert(2, 56);
 firstItem.append(20);
-firstItem.insert(2, 55);
-firstItem.remove(2);
-firstItem.remove(1);
+// firstItem.insert(2, 55);
+// firstItem.remove(2);
+// firstItem.remove(1);
+firstItem.reverse();
+firstItem.printList();
